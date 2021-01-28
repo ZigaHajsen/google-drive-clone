@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import { AuthProvider } from './contexts/AuthContext';
-import { Signup, Dashboard } from './components/authentication';
+import { Dashboard, Signup, Login } from './components/authentication';
 
 const App: React.FC = () => {
   return (
@@ -16,6 +16,7 @@ const App: React.FC = () => {
             <Switch>
               <Route exact path='/' component={Dashboard} />
               <Route path='/signup' component={Signup} />
+              <Route path='/login' component={Login} />
             </Switch>
           </AuthProvider>
         </Router>
