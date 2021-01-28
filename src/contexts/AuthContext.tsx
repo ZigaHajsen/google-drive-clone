@@ -10,6 +10,7 @@ export const useAuth = () => {
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<any>();
+  const [loading, setLoading] = useState<Boolean>(true);
 
   const signup = (email: string, password: string) => {
     return auth.createUserWithEmailAndPassword(email, password);
@@ -18,6 +19,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      setLoading(false);
     });
 
     return unsubscribe;
@@ -28,5 +30,9 @@ export const AuthProvider: React.FC = ({ children }) => {
     signup,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 };
