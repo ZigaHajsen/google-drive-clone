@@ -1,14 +1,24 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Card, Button, Alert } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
 
 const Dashboard: React.FC = () => {
   const [error, setError] = useState('');
   // @ts-ignore
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
 
-  const handleLogout = () => {};
+  const handleLogout = async () => {
+    setError('');
+
+    try {
+      await logout();
+      history.push('/login');
+    } catch {
+      setError('Failed to log out');
+    }
+  };
 
   return (
     <Fragment>

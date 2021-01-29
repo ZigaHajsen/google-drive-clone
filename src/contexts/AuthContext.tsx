@@ -20,6 +20,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     return auth.signInWithEmailAndPassword(email, password);
   };
 
+  const logout = () => {
+    return auth.signOut();
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -33,6 +37,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     currentUser,
     signup,
     login,
+    logout,
   };
 
   return (
