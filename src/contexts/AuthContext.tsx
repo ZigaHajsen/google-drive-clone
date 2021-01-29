@@ -24,6 +24,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     return auth.signOut();
   };
 
+  const resetPassword = (email: string) => {
+    return auth.sendPasswordResetEmail(email);
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -38,6 +42,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     signup,
     login,
     logout,
+    resetPassword,
   };
 
   return (
