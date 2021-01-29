@@ -8,6 +8,7 @@ import {
   Login,
   PrivateRoute,
   ForgotPassword,
+  UpdateProfile,
 } from './components/authentication';
 
 const App: React.FC = () => {
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <AuthProvider>
             <Switch>
               <PrivateRoute exact path='/' component={Dashboard} />
+              <PrivateRoute path='/update-profile' component={UpdateProfile} />
               <Route path='/signup' component={Signup} />
               <Route path='/login' component={Login} />
               <Route path='/forgot-password' component={ForgotPassword} />
