@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
+import { useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import { useFolder } from '../../hooks/useFolder';
 import { Navbar, AddFolderButton, Folder } from '../drive';
 
 const Dashboard: React.FC = () => {
   // @ts-ignore
-  const { folder, childFolders } = useFolder('N4D2J17KE0JBTp2LFycD');
-  console.log(childFolders);
+  const { folderId } = useParams();
+  // @ts-ignore
+  const { folder, childFolders } = useFolder(folderId);
 
   return (
     <Fragment>

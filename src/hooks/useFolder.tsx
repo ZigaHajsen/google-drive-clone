@@ -10,7 +10,7 @@ const ACTIONS = {
 
 const ROOT_FOLDER = {
   name: 'Root',
-  id: 'root',
+  id: null,
   path: [],
 };
 
@@ -41,7 +41,7 @@ const reducer = (
   }
 };
 
-export const useFolder = (folderId: any, folder: any) => {
+export const useFolder = (folderId = null, folder = null) => {
   const [state, dispatch] = useReducer(reducer, {
     folderId,
     folder,
@@ -56,7 +56,7 @@ export const useFolder = (folderId: any, folder: any) => {
   }, [folderId, folder]);
 
   useEffect(() => {
-    if (folderId === undefined) {
+    if (folderId == null) {
       return dispatch({
         type: ACTIONS.UPDATE_FOLDER,
         payload: { folder: ROOT_FOLDER },
@@ -64,6 +64,7 @@ export const useFolder = (folderId: any, folder: any) => {
     }
 
     database.folders
+      // @ts-ignore
       .doc(folderId)
       .get()
       .then((doc) => {

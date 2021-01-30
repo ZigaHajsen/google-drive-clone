@@ -17,6 +17,7 @@ const App: React.FC = () => {
       <AuthProvider>
         <Switch>
           <PrivateRoute exact path='/' component={Dashboard} />
+          <PrivateRoute exact path='/folder/:folderId' component={Dashboard} />
           <PrivateRoute path='/profile' component={Profile} />
           <PrivateRoute path='/update-profile' component={UpdateProfile} />
           <Route path='/signup' component={Signup} />
