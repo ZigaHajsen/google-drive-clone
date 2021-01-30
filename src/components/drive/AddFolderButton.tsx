@@ -6,7 +6,7 @@ import { database } from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 
 interface AddFolderButtonProps {
-  currentFolder?: any;
+  currentFolder: any;
 }
 
 const AddFolderButton: React.FC<AddFolderButtonProps> = ({ currentFolder }) => {
