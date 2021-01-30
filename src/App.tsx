@@ -9,12 +9,14 @@ import {
   ForgotPassword,
   UpdateProfile,
 } from './components/authentication';
+import { Dashboard } from './components/drive';
 
 const App: React.FC = () => {
   return (
     <Router>
       <AuthProvider>
         <Switch>
+          <PrivateRoute exact path='/' component={Dashboard} />
           <PrivateRoute path='/profile' component={Profile} />
           <PrivateRoute path='/update-profile' component={UpdateProfile} />
           <Route path='/signup' component={Signup} />
