@@ -1,7 +1,8 @@
-import React, { Fragment, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
+import { CenteredContainer } from '../authentication';
 
 const ForgotPassword: React.FC = () => {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -28,7 +29,7 @@ const ForgotPassword: React.FC = () => {
   };
 
   return (
-    <Fragment>
+    <CenteredContainer>
       <Card>
         <Card.Body>
           <h2 className='text-center mb-4'>Reset Password</h2>
@@ -51,7 +52,7 @@ const ForgotPassword: React.FC = () => {
       <div className='w-100 text-center mt-2'>
         Need an account? <Link to='/signup'>Sign Up</Link>
       </div>
-    </Fragment>
+    </CenteredContainer>
   );
 };
 

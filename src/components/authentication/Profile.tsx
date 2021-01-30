@@ -1,9 +1,10 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Card, Button, Alert } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
+import { CenteredContainer } from '../authentication';
 
-const Dashboard: React.FC = () => {
+const Profile: React.FC = () => {
   const [error, setError] = useState('');
   // @ts-ignore
   const { currentUser, logout } = useAuth();
@@ -21,7 +22,7 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <Fragment>
+    <CenteredContainer>
       <Card>
         <Card.Body>
           <h2 className='text-center mb-4'>Profile</h2>
@@ -37,8 +38,8 @@ const Dashboard: React.FC = () => {
           Log Out
         </Button>
       </div>
-    </Fragment>
+    </CenteredContainer>
   );
 };
 
-export default Dashboard;
+export default Profile;
