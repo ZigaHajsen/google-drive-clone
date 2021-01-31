@@ -11,7 +11,7 @@ interface FolderProps {
 const Folder: React.FC<FolderProps> = ({ folder }) => {
   return (
     <Button
-      to={{ pathname: `/folder/${folder.id}`, state: { folder: folder } }}
+      to={{ pathname: `/folder/${folder.id}`, state: { folder } }}
       variant='outline-dark'
       className='text.truncate w-100'
       as={Link}
