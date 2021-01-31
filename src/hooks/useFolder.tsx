@@ -35,12 +35,12 @@ const reducer = (
     case ACTIONS.SET_CHILD_FOLDERS:
       return {
         ...state,
-        childFiles: payload.childFiles,
+        childFolders: payload.childFolders,
       };
     case ACTIONS.SET_CHILD_FILES:
       return {
         ...state,
-        childFolders: payload.childFolders,
+        childFiles: payload.childFiles,
       };
     default:
       return state;
