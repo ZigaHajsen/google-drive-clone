@@ -8,14 +8,17 @@ import {
   Folder,
   FolderBreadcrumbs,
   AddFileButton,
+  File,
 } from '../drive';
 
 const Dashboard: React.FC = () => {
   // @ts-ignore
   const { folderId } = useParams();
-  const { state = {} } = useLocation();
-  // @ts-ignore
-  const { folder, childFolders } = useFolder(folderId, state.folder);
+  const { state = {} } = useLocation<any>();
+  const { folder, childFolders, childFiles } = useFolder(
+    folderId,
+    state.folder
+  );
 
   return (
     <Fragment>
@@ -28,17 +31,29 @@ const Dashboard: React.FC = () => {
         </div>
         {childFolders.length > 0 && (
           <div className='d-flex flex-wrap'>
-            {childFolders.map((childFolder: any) => {
-              return (
-                <div
-                  key={childFolder.id}
-                  style={{ maxWidth: '250px' }}
-                  className='p-2'
-                >
-                  <Folder folder={childFolder} />
-                </div>
-              );
-            })}
+            {childFolders.map((childFolder: any) => (
+              <div
+                key={childFolder.id}
+                style={{ maxWidth: '250px' }}
+                className='p-2'
+              >
+                <Folder folder={childFolder} />
+              </div>
+            ))}
+          </div>
+        )}
+        {childFolders.length > 0 && childFiles.length > 0 && <hr />}
+        {childFiles.length > 0 && (
+          <div className='d-flex flex-wrap'>
+            {childFiles.map((childFile: any) => (
+              <div
+                key={childFile.id}
+                style={{ maxWidth: '250px' }}
+                className='p-2'
+              >
+                <File file={childFile} />
+              </div>
+            ))}
           </div>
         )}
       </Container>
