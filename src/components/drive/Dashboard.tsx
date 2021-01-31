@@ -2,7 +2,13 @@ import React, { Fragment } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import { useFolder } from '../../hooks/useFolder';
-import { Navbar, AddFolderButton, Folder, FolderBreadcrumbs } from '../drive';
+import {
+  Navbar,
+  AddFolderButton,
+  Folder,
+  FolderBreadcrumbs,
+  AddFileButton,
+} from '../drive';
 
 const Dashboard: React.FC = () => {
   // @ts-ignore
@@ -17,6 +23,7 @@ const Dashboard: React.FC = () => {
       <Container fluid>
         <div className='d-flex align-items-center'>
           <FolderBreadcrumbs currentFolder={folder} />
+          <AddFileButton currentFolder={folder} />
           <AddFolderButton currentFolder={folder} />
         </div>
         {childFolders.length > 0 && (
