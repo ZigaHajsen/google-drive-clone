@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import { useFolder } from '../../hooks/useFolder';
 import { Navbar, AddFolderButton, Folder, FolderBreadcrumbs } from '../drive';
@@ -7,8 +7,9 @@ import { Navbar, AddFolderButton, Folder, FolderBreadcrumbs } from '../drive';
 const Dashboard: React.FC = () => {
   // @ts-ignore
   const { folderId } = useParams();
+  const { state = {} } = useLocation();
   // @ts-ignore
-  const { folder, childFolders } = useFolder(folderId);
+  const { folder, childFolders } = useFolder(folderId, state.folder);
 
   return (
     <Fragment>
