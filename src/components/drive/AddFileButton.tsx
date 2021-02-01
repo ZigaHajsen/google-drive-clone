@@ -75,13 +75,26 @@ const AddFileButton: React.FC<AddFileButtonProps> = ({ currentFolder }) => {
         });
 
         uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-          database.files.add({
-            url,
-            name: file.name,
-            createdAt: database.getCurrentTimeStamp(),
-            folderId: currentFolder.id,
-            userId: currentUser.uid,
-          });
+          database.files
+            .where('name', '==', file.name)
+            .where('userId', '==', currentUser.uid)
+            .where('folderId', '==', currentFolder.id)
+            .get()
+            .then((existingFiles: any) => {
+              const existingFile = existingFiles.docs[0];
+
+              if (existingFile) {
+                existingFile.ref.update({ url });
+              } else {
+                database.files.add({
+                  url,
+                  name: file.name,
+                  createdAt: database.getCurrentTimeStamp(),
+                  folderId: currentFolder.id,
+                  userId: currentUser.uid,
+                });
+              }
+            });
         });
       }
     );
