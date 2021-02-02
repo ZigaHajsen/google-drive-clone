@@ -1,6 +1,19 @@
 import { useReducer, useEffect } from 'react';
 import { database } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
+interface ReducerState {
+  folderId?: string | null;
+  folder?:
+    | {
+        id: string | null;
+        name: string;
+        path: [] | never[];
+      }
+    | null
+    | undefined;
+  childFolders?: string[];
+  childFiles?: string[];
+}
 
 const ACTIONS = {
   SELECT_FOLDER: 'SELECT_FOLDER',
@@ -16,8 +29,8 @@ export const ROOT_FOLDER = {
 };
 
 const reducer = (
-  state: any,
-  { type, payload }: { type: any; payload: any }
+  state: ReducerState,
+  { type, payload }: { type: string; payload: ReducerState }
 ) => {
   switch (type) {
     case ACTIONS.SELECT_FOLDER:
