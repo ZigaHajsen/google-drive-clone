@@ -24,8 +24,8 @@ const AddFileButton: React.FC<AddFileButtonProps> = ({ currentFolder }) => {
   // @ts-ignore
   const { currentUser } = useAuth();
 
-  const handleUpload = (e: any) => {
-    const file = e.target.files[0];
+  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files![0];
 
     if (currentFolder === null || file === null) return;
 
