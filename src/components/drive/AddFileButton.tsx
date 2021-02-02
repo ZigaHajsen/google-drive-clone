@@ -9,7 +9,14 @@ import { useAuth } from '../../contexts/AuthContext';
 import { ROOT_FOLDER } from '../../hooks/useFolder';
 
 interface AddFileButtonProps {
-  currentFolder: any;
+  currentFolder:
+    | {
+        id: string | null;
+        name: string;
+        path: [] | never[];
+      }
+    | null
+    | undefined;
 }
 
 const AddFileButton: React.FC<AddFileButtonProps> = ({ currentFolder }) => {
@@ -37,7 +44,9 @@ const AddFileButton: React.FC<AddFileButtonProps> = ({ currentFolder }) => {
     const filePath =
       currentFolder === ROOT_FOLDER
         ? `${currentFolder.path.join('/')}/${file.name}`
-        : `${currentFolder.path.join('/')}/${currentFolder.name}/${file.name}`;
+        : `${currentFolder!.path.join('/')}/${currentFolder!.name}/${
+            file.name
+          }`;
 
     const uploadTask = storage
       .ref(`/files/${currentUser.uid}/${filePath}`)
@@ -78,7 +87,7 @@ const AddFileButton: React.FC<AddFileButtonProps> = ({ currentFolder }) => {
           database.files
             .where('name', '==', file.name)
             .where('userId', '==', currentUser.uid)
-            .where('folderId', '==', currentFolder.id)
+            .where('folderId', '==', currentFolder!.id)
             .get()
             .then((existingFiles: any) => {
               const existingFile = existingFiles.docs[0];
@@ -90,7 +99,7 @@ const AddFileButton: React.FC<AddFileButtonProps> = ({ currentFolder }) => {
                   url,
                   name: file.name,
                   createdAt: database.getCurrentTimeStamp(),
-                  folderId: currentFolder.id,
+                  folderId: currentFolder!.id,
                   userId: currentUser.uid,
                 });
               }

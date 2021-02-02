@@ -4,7 +4,14 @@ import { Breadcrumb } from 'react-bootstrap';
 import { ROOT_FOLDER } from '../../hooks/useFolder';
 
 interface FolderBreadcrumbsProps {
-  currentFolder: any;
+  currentFolder:
+    | {
+        id: string | null;
+        name: string;
+        path: [] | never[];
+      }
+    | null
+    | undefined;
 }
 
 const FolderBreadcrumbs: React.FC<FolderBreadcrumbsProps> = ({

@@ -3,7 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons';
 
 interface FileProps {
-  file: any;
+  file: {
+    id: string;
+    folderId: string;
+    name: string;
+    url: string;
+    userId: string;
+  };
 }
 
 const File: React.FC<FileProps> = ({ file }) => {

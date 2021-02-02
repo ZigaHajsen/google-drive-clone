@@ -5,19 +5,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
 
 interface FolderProps {
-  folder: any;
+  folder:
+    | {
+        id: string | null;
+        name: string;
+        path: [] | never[];
+      }
+    | null
+    | undefined;
 }
 
 const Folder: React.FC<FolderProps> = ({ folder }) => {
   return (
     <Button
-      to={{ pathname: `/folder/${folder.id}`, state: { folder } }}
+      to={{ pathname: `/folder/${folder!.id}`, state: { folder } }}
       variant='outline-dark'
       className='text.truncate w-100'
       as={Link}
     >
       <FontAwesomeIcon icon={faFolder} className='mr-2' />
-      {folder.name}
+      {folder!.name}
     </Button>
   );
 };

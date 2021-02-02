@@ -7,7 +7,14 @@ import { useAuth } from '../../contexts/AuthContext';
 import { ROOT_FOLDER } from '../../hooks/useFolder';
 
 interface AddFolderButtonProps {
-  currentFolder: any;
+  currentFolder:
+    | {
+        id: string | null;
+        name: string;
+        path: [] | never[];
+      }
+    | null
+    | undefined;
 }
 
 const AddFolderButton: React.FC<AddFolderButtonProps> = ({ currentFolder }) => {
@@ -31,6 +38,7 @@ const AddFolderButton: React.FC<AddFolderButtonProps> = ({ currentFolder }) => {
     const path = [...currentFolder.path];
 
     if (currentFolder !== ROOT_FOLDER) {
+      // @ts-ignore
       path.push({ name: currentFolder.name, id: currentFolder.id });
     }
 

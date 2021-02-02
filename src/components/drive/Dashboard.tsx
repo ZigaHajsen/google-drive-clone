@@ -29,9 +29,9 @@ const Dashboard: React.FC = () => {
           <AddFileButton currentFolder={folder} />
           <AddFolderButton currentFolder={folder} />
         </div>
-        {childFolders.length > 0 && (
+        {childFolders!.length > 0 && (
           <div className='d-flex flex-wrap'>
-            {childFolders.map((childFolder: any) => (
+            {childFolders!.map((childFolder: any) => (
               <div
                 key={childFolder.id}
                 style={{ maxWidth: '250px' }}
@@ -42,10 +42,10 @@ const Dashboard: React.FC = () => {
             ))}
           </div>
         )}
-        {childFolders.length > 0 && childFiles.length > 0 && <hr />}
-        {childFiles.length > 0 && (
+        {childFolders!.length > 0 && childFiles!.length > 0 && <hr />}
+        {childFiles!.length > 0 && (
           <div className='d-flex flex-wrap'>
-            {childFiles.map((childFile: any) => (
+            {childFiles!.map((childFile: any) => (
               <div
                 key={childFile.id}
                 style={{ maxWidth: '250px' }}
