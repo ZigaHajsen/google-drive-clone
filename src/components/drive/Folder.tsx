@@ -3,16 +3,10 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
+import { FolderModel } from '../../models/interface.model';
 
 interface FolderProps {
-  folder:
-    | {
-        id: string | null;
-        name: string;
-        path: [] | never[];
-      }
-    | null
-    | undefined;
+  folder: FolderModel | null | undefined;
 }
 
 const Folder: React.FC<FolderProps> = ({ folder }) => {

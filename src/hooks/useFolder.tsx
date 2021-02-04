@@ -1,16 +1,10 @@
 import { useReducer, useEffect } from 'react';
 import { database } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
+import { FolderModel } from '../models/interface.model';
 interface ReducerState {
   folderId?: string | null;
-  folder?:
-    | {
-        id: string | null;
-        name: string;
-        path: [] | never[];
-      }
-    | null
-    | undefined;
+  folder?: FolderModel | null;
   childFolders?: string[];
   childFiles?: string[];
 }

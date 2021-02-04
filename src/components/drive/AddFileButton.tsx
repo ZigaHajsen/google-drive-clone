@@ -7,16 +7,10 @@ import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
 import { storage, database } from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import { ROOT_FOLDER } from '../../hooks/useFolder';
+import { FolderModel } from '../../models/interface.model';
 
 interface AddFileButtonProps {
-  currentFolder:
-    | {
-        id: string | null;
-        name: string;
-        path: [] | never[];
-      }
-    | null
-    | undefined;
+  currentFolder: FolderModel | null | undefined;
 }
 
 const AddFileButton: React.FC<AddFileButtonProps> = ({ currentFolder }) => {

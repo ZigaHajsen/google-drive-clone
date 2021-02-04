@@ -5,16 +5,10 @@ import { faFolderPlus } from '@fortawesome/free-solid-svg-icons';
 import { database } from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import { ROOT_FOLDER } from '../../hooks/useFolder';
+import { FolderModel } from '../../models/interface.model';
 
 interface AddFolderButtonProps {
-  currentFolder:
-    | {
-        id: string | null;
-        name: string;
-        path: [] | never[];
-      }
-    | null
-    | undefined;
+  currentFolder: FolderModel | null | undefined;
 }
 
 const AddFolderButton: React.FC<AddFolderButtonProps> = ({ currentFolder }) => {

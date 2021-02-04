@@ -2,16 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb } from 'react-bootstrap';
 import { ROOT_FOLDER } from '../../hooks/useFolder';
+import { FolderModel } from '../../models/interface.model';
 
 interface FolderBreadcrumbsProps {
-  currentFolder:
-    | {
-        id: string | null;
-        name: string;
-        path: [] | never[];
-      }
-    | null
-    | undefined;
+  currentFolder: FolderModel | null | undefined;
 }
 
 const FolderBreadcrumbs: React.FC<FolderBreadcrumbsProps> = ({
