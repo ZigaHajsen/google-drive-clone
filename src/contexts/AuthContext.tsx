@@ -12,8 +12,6 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<any>();
   const [loading, setLoading] = useState<Boolean>(true);
 
-  console.log(currentUser);
-
   const signup = (email: string, password: string) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
