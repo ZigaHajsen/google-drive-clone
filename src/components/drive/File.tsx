@@ -1,15 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons';
+import { FileModel } from '../../models/interface.model';
 
 interface FileProps {
-  file: {
-    id: string;
-    folderId: string;
-    name: string;
-    url: string;
-    userId: string;
-  };
+  file: FileModel;
 }
 
 const File: React.FC<FileProps> = ({ file }) => {
