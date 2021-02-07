@@ -10,6 +10,8 @@ Contains
 - Profile updates
 - Cloud Firestore database
 - Firebase storage
+- Context API
+- Custom Hooks
 - Folder creation
 - Folder tree navigation
 - File upload
